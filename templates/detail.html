@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>MyJournal</title>
+        <link href="https://fonts.googleapis.com/css?family=Cousine:400" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans:600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="site-header">
+                    <a class="logo" href="/"><i class="material-icons">library_books</i></a>
+                    <a class="button icon-right" href="/new"><span>New Entry</span> <i class="material-icons">add</i></a>
+                </div>
+            </div>
+        </header>
+        <section>
+            <div class="container">
+                <div class="entry-list single">
+                    <article>
+                        <h1>{{ entry.title }}</h1>
+                        <time datetime="{{ entry.ddate }}">{{ entry.tdate }}</time>
+                        <div class="entry">
+                            <h3>Time Spent: </h3>
+                            <p>{{ entry.time_spent }}</p>
+                        </div>
+                        <div class="entry">
+                            <h3>What I Learned:</h3>
+                            <p>{{ entry.learned }}</p>
+                        </div>
+                        <div class="entry">
+                            <h3>Resources to Remember:</h3>
+                            <p>{{ entry.resources }}</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="edit">
+                <p><a href="/edit/{{ entry.id }}">Edit Entry</a></p>
+            </div>
+        </section>
+        <footer>
+            <div>
+                &copy; MyJournal
+            </div>
+        </footer>
+    </body>
+</html>
