@@ -1,6 +1,6 @@
 from peewee import CharField, DateField, TextField
 from datetime import datetime
-from wtforms import Form, StringField, DateField, validators, ValidationError
+from wtforms import Form, StringField, DateField, validators, ValidationError, widgets
 from models import BaseModel
 
 def validate_date(form, field):
@@ -13,8 +13,8 @@ class EntryForm(Form):
     title = StringField('title')
     date = StringField('date', [validate_date])
     time_spent = StringField('time_spent')
-    learned = StringField('learned')
-    resources = StringField('resources')
+    learned = StringField('learned', widget=widgets.TextArea())
+    resources = StringField('resources', widget=widgets.TextArea())
 
 @BaseModel.register
 class Entry(BaseModel):
